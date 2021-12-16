@@ -355,3 +355,7 @@
 .popup__close-button:hover {
     opacity: .6;
 }
+
+.visible {
+    visibility: visible;
+}

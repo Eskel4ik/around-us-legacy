@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="pages/index.css" />
+    <title>Around The U.S.</title>
+</head>
+
+<body class="page">
+    <header class="header">
+        <img class="logo" src="./images/logo.png" alt="around the us logo">
+    </header>
+    <section class="user">
+        <img class="user__avatar" src="./images/jacques.png" alt="jacques cousto photo">
+        <div class="user__text-container">
+            <div class="user__title-container">
+                <h1 class="user__name">Jacques Cousteau</h1>
+                <button class="edit-button" type="button">
+                <img class="edit-button__icon" src="./images/edit-button_icon.png" alt="white pencil icon">
+            </button>
+            </div>
+            <p class="user__info">Explorer</p>
+        </div>
+        <button class="add-button">
+            <img src="./images/addbutton_icon.png" alt="white cross">
+        </button>
+    </section>
+    <section class="gallery">
+        <div class="gallery__card">
+            <img class="gallery__picture" src="./images/yosemitevalley.png" alt="yosemit valley pic">
+            <div class="gallery__text-container">
+                <p class="gallery__text">Yosemite Valley</p>
+                <label class="like-button">
+                    <input class="like-button__input" type="checkbox">
+                    <img class="like-button_stance_active" src="./images/heart_black.png" alt="heart-icon-black">
+                </label>
+            </div>
+        </div>
+        <div class="gallery__card">
+            <img class="gallery__picture" src="./images/lake_louise.png" alt="yosemit valley pic">
+            <div class="gallery__text-container">
+                <p class="gallery__text">Lake Louise</p>
+                <label class="like-button">
+                    <input class="like-button__input" type="checkbox">
+                    <img class="like-button_stance_active" src="./images/heart_black.png" alt="heart-icon-black">
+                </label>
+            </div>
+        </div>
+        <div class="gallery__card">
+            <img class="gallery__picture" src="./images/bald_mountains.png" alt="yosemit valley pic">
+            <div class="gallery__text-container">
+                <p class="gallery__text">Bald Mountains</p>
+                <label class="like-button">
+                    <input class="like-button__input" type="checkbox">
+                    <img class="like-button_stance_active" src="./images/heart_black.png" alt="heart-icon-black">
+                </label>
+            </div>
+        </div>
+        <div class="gallery__card">
+            <img class="gallery__picture" src="./images/latemar.png" alt="yosemit valley pic">
+            <div class="gallery__text-container">
+                <p class="gallery__text">Latemar</p>
+                <label class="like-button">
+                    <input class="like-button__input" type="checkbox">
+                    <img class="like-button_stance_active" src="./images/heart_black.png" alt="heart-icon-black">
+                </label>
+            </div>
+        </div>
+        <div class="gallery__card">
+            <img class="gallery__picture" src="./images/vanoice.png" alt="yosemit valley pic">
+            <div class="gallery__text-container">
+                <p class="gallery__text">Vanoise National Park</p>
+                <label class="like-button">
+                    <input class="like-button__input" type="checkbox">
+                    <img class="like-button_stance_active" src="./images/heart_black.png" alt="heart-icon-black">
+                </label>
+            </div>
+        </div>
+        <div class="gallery__card">
+            <img class="gallery__picture" src="./images/lago_di_braies.png" alt="yosemit valley pic">
+            <div class="gallery__text-container">
+                <p class="gallery__text">Lago di Braies</p>
+                <label class="like-button">
+                    <input class="like-button__input" type="checkbox">
+                    <img class="like-button_stance_active" src="./images/heart_black.png" alt="heart-icon-black">
+                </label>
+            </div>
+        </div>
+        <div class="popup">
+            <form class="popup__form" action="#">
+                <button class="popup__close-button" type="button"><img src="./images/Close_Icon.png" alt="cross icon"></button>
+                <h2 class="popup__title">Edit profile</h2>
+                <input class="popup__input" type="text" name="name" placeholder="Your name">
+                <input class="popup__input" type="text" name="about" placeholder="About me">
+                <button class="popup__button" type="submit">Save</button>
+            </form>
+        </div>
+    </section>
+    <footer class="footer">
+        <p class="footer__text">&copy; 2021 Around The U.S.</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,357 @@
+@import url(../vendor/normalize.css);
+@import url(https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&display=swap);
+.page {
+    font-family: 'Inter', sans-serif;
+    background-color: #000;
+}
+
+.header {
+    min-height: 120px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #545454;
+    max-width: 880px;
+    margin: 0 auto;
+}
+
+@media screen and (max-width:879px) {
+    .header {
+        max-width: 100%;
+        min-height: auto;
+    }
+}
+
+.logo {
+    margin-top: 45px;
+}
+
+@media screen and (max-width:600px) {
+    .logo {
+        margin: 28px 0 32px 27px;
+    }
+}
+
+.user {
+    min-height: 210px;
+    display: flex;
+    color: #fff;
+    max-width: 880px;
+    margin: 0 auto;
+}
+
+@media screen and (max-width:879px) {
+    .user {
+        max-width: calc(100% - 38px);
+    }
+}
+
+@media screen and (max-width:600px) {
+    .user {
+        flex-direction: column;
+    }
+}
+
+.user__avatar {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    align-self: center;
+}
+
+@media screen and (max-width:600px) {
+    .user__avatar {
+        margin-top: 38px;
+    }
+}
+
+.user__text-container {
+    margin: 0 0 0 30px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+@media screen and (max-width:600px) {
+    .user__text-container {
+        margin: 0;
+    }
+}
+
+.user__title-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+@media screen and (max-width:600px) {
+    .user__title-container {
+        justify-content: center;
+    }
+}
+
+.user__name {
+    font-weight: 500;
+    font-size: 42px;
+    line-height: 48px;
+    margin: 62px 0 0 0;
+}
+
+@media screen and (max-width:600px) {
+    .user__name {
+        font-size: 22px;
+        line-height: 27px;
+        text-align: center;
+        margin: 26px 0 0 0;
+    }
+}
+
+.user__info {
+    margin: 16px 0 0 0;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+@media screen and (max-width:600px) {
+    .user__info {
+        text-align: center;
+    }
+}
+
+.edit-button {
+    box-sizing: border-box;
+    width: 24px;
+    height: 24px;
+    border: #fff solid 1px;
+    background-color: inherit;
+    margin: 77px 18px 0 18px;
+}
+
+@media screen and (max-width:600px) {
+    .edit-button {
+        width: 18px;
+        height: 18px;
+        margin: 28px 0 0 10px;
+        padding: 0;
+        box-sizing: content-box;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .edit-button__icon {
+        width: 7.5px;
+        margin: 5.25px;
+    }
+}
+
+.edit-button:hover {
+    opacity: .6;
+}
+
+.edit-button__icon {
+    -webkit-user-drag: none;
+}
+
+.add-button {
+    min-width: 150px;
+    min-height: 50px;
+    border: 2px solid #fff;
+    background-color: inherit;
+    align-self: center;
+    margin-left: auto;
+}
+
+.add-button:hover {
+    opacity: .6;
+}
+
+@media screen and (max-width:600px) {
+    .add-button {
+        width: 100%;
+        margin: 36px auto;
+    }
+}
+
+.gallery {
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 880px;
+    margin: 0 auto;
+}
+
+@media screen and (max-width:600px) {
+    .gallery {
+        justify-content: center;
+    }
+}
+
+.gallery__card {
+    max-width: 282px;
+    margin: 0 17px 20px 0;
+}
+
+@media screen and (max-width:320px) {
+    .gallery__card {
+        margin-right: 0;
+    }
+}
+
+@media screen and (min-width:880px) {
+    .gallery__card:nth-of-type(3n + 3) {
+        margin-right: 0;
+    }
+}
+
+.gallery__picture {
+    width: 282px;
+    height: 282px;
+    object-position: top;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery__text-container {
+    background-color: #fff;
+    color: #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 80px;
+    padding: 0 18px 0 21px;
+    border-radius: 0 0 10px 10px;
+}
+
+.gallery__text {
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 29px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 220px;
+}
+
+.like-button__input {
+    display: none;
+}
+
+.like-button {
+    position: relative;
+    background-image: url(../images/heart-icon.svg);
+    background-size: cover;
+    width: 21px;
+    height: 19px;
+}
+
+.like-button:hover {
+    opacity: .6;
+}
+
+.footer {
+    max-width: 880px;
+    margin: 0 auto;
+}
+
+@media screen and (max-width:879px) {
+    .footer {
+        max-width: calc(100% - 38px);
+    }
+}
+
+.footer__text {
+    color: #545454;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    margin: 48px 0 60px 0;
+}
+
+@media screen and (max-width:320px) {
+    .footer__text {
+        margin: 50px 0 36px 0;
+    }
+}
+
+.like-button_stance_active {
+    position: absolute;
+    right: 0;
+    visibility: hidden;
+}
+
+.like-button__input:checked~.like-button_stance_active {
+    visibility: visible;
+}
+
+.popup {
+    width: 100%;
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .5);
+    visibility: hidden;
+}
+
+.popup__form {
+    width: 430px;
+    height: 330px;
+    box-sizing: border-box;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 36px;
+    box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0, 15);
+    position: absolute;
+    left: calc(50% - 430px / 2);
+    top: calc(50% - 330px / 2);
+}
+
+.popup__title {
+    margin: 0 0 10px 0;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 29px;
+}
+
+.popup__input {
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    outline: none;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    margin-top: 29px;
+    padding-bottom: 13px;
+}
+
+.popup__button {
+    width: 100%;
+    height: 50px;
+    background: #000000;
+    border-radius: 2px;
+    color: #fff;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    margin-top: 48px;
+    border: 0;
+}
+
+.popup__button:hover {
+    opacity: .8;
+}
+
+.popup__close-button {
+    background-color: transparent;
+    border: 0;
+    position: absolute;
+    left: 100%;
+    top: -40px;
+}
+
+.popup__close-button:hover {
+    opacity: .6;
+}

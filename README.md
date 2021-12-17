@@ -4,8 +4,8 @@
 
 * Figma
 * Images
-* Link to project on GitHub Pages: https://eskel4ik.github.io/web_project_4/index.html
-**Figma**
+
+* [Link to the project in GitHub Pages](https://eskel4ik.github.io/web_project_4/index.html)
 
 * [Link to the project in Figma](https://www.figma.com/file/SurN1jaeEQIhuZEDMhmWWf/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1)
 

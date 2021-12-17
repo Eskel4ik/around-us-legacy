@@ -1,27 +1,27 @@
-let editButton = document.querySelector('.edit-button');
+let popupWindow = document.querySelector('.popup');
+let editButton = document.querySelector('.user__edit-button');
 let closeButton = document.querySelector('.popup__close-button');
-
-function popupShow() {
-    let popupWindow = document.querySelector('.popup');
-    popupWindow.classList.toggle('visible');
-}
-editButton.addEventListener('click', popupShow);
-closeButton.addEventListener('click', popupShow);
-
 let inputName = document.querySelector('.popup__input_value_name');
-let userName = document.querySelector('.user__name').textContent;
+let userName = document.querySelector('.user__name');
 let inputInfo = document.querySelector('.popup__input_value_about');
-let userInfo = document.querySelector('.user__info').textContent;
-
-inputName.setAttribute('value', userName);
-inputInfo.setAttribute('value', userInfo);
-
-function updateUser() {
-    userName = inputName.value;
-    userInfo = inputInfo.value;
-    console.log(inputName.value);
-    console.log(inputInfo.value);
-    console.log(inputInfo.value);
-}
+let userInfo = document.querySelector('.user__info');
 let saveButton = document.querySelector('.popup__button');
-saveButton.addEventListener('click', updateUser);
+
+editButton.addEventListener('click', () => {
+    popupWindow.classList.toggle('visible');
+    inputName.setAttribute('value', userName.textContent);
+    inputInfo.setAttribute('value', userInfo.textContent);
+});
+
+closeButton.addEventListener('click', () => {
+    popupWindow.classList.toggle('visible');
+});
+
+popupWindow.addEventListener('submit', (event) => {
+    event.preventDefault();
+    userName.textContent = inputName.value;
+    userInfo.textContent = inputInfo.value;
+});
+saveButton.addEventListener('click', () => {
+    popupWindow.classList.toggle('visible');
+});

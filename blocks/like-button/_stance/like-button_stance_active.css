@@ -1,0 +1,9 @@
+.like-button_stance_active {
+    position: absolute;
+    right: 0;
+    visibility: hidden;
+}
+
+.like-button__input:checked~.like-button_stance_active {
+    visibility: visible;
+}

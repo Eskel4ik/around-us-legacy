@@ -1,0 +1,19 @@
+.user {
+    min-height: 210px;
+    display: flex;
+    color: #fff;
+    max-width: 880px;
+    margin: 0 auto;
+}
+
+@media screen and (max-width:879px) {
+    .user {
+        max-width: calc(100% - 38px);
+    }
+}
+
+@media screen and (max-width:600px) {
+    .user {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,16 @@
+.gallery__card {
+    max-width: 282px;
+    margin: 0 17px 20px 0;
+}
+
+@media screen and (max-width:320px) {
+    .gallery__card {
+        margin-right: 0;
+    }
+}
+
+@media screen and (min-width:880px) {
+    .gallery__card:nth-of-type(3n + 3) {
+        margin-right: 0;
+    }
+}

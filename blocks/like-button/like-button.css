@@ -1,0 +1,12 @@
+.like-button {
+    position: relative;
+    background-image: url(../../images/heart-icon.svg);
+    background-size: cover;
+    width: 21px;
+    height: 19px;
+    cursor: pointer;
+}
+
+.like-button:hover {
+    opacity: .6;
+}

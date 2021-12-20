@@ -5,23 +5,24 @@ let inputName = document.querySelector('.popup__input_value_name');
 let userName = document.querySelector('.user__name');
 let inputInfo = document.querySelector('.popup__input_value_about');
 let userInfo = document.querySelector('.user__info');
-let saveButton = document.querySelector('.popup__button');
 
-editButton.addEventListener('click', () => {
-    popupWindow.classList.toggle('visible');
-    inputName.setAttribute('value', userName.textContent);
-    inputInfo.setAttribute('value', userInfo.textContent);
-});
+function editProfileWindow() {
+    popupWindow.classList.toggle('popup_visibility_visible');
+    inputName.value = userName.textContent;
+    inputInfo.value = userInfo.textContent;
+}
+editButton.addEventListener('click', editProfileWindow);
 
-closeButton.addEventListener('click', () => {
-    popupWindow.classList.toggle('visible');
-});
+function closePopup() {
+    popupWindow.classList.toggle('popup_visibility_visible');
+}
 
-popupWindow.addEventListener('submit', (event) => {
+closeButton.addEventListener('click', closePopup);
+
+function formSubmit(event) {
     event.preventDefault();
     userName.textContent = inputName.value;
     userInfo.textContent = inputInfo.value;
-});
-saveButton.addEventListener('click', () => {
-    popupWindow.classList.toggle('visible');
-});
+    popupWindow.classList.toggle('popup_visibility_visible');
+}
+popupWindow.addEventListener('submit', formSubmit);

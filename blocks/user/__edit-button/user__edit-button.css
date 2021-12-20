@@ -8,7 +8,7 @@
     cursor: pointer;
 }
 
-@media screen and (max-width:600px) {
+@media screen and (max-width:850px) {
     .user__edit-button {
         width: 18px;
         height: 18px;

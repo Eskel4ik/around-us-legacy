@@ -1,7 +1,7 @@
 .header {
     min-height: 120px;
     box-sizing: border-box;
-    border-bottom: 1px solid #545454;
+    border-bottom: 1px solid rgba(84, 84, 84, .7);
     max-width: 880px;
     margin: 0 auto;
 }
@@ -9,6 +9,6 @@
 @media screen and (max-width:879px) {
     .header {
         max-width: 100%;
-        min-height: auto;
+        min-height: 84px;
     }
 }

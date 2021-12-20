@@ -1,5 +1,5 @@
 .user {
-    min-height: 210px;
+    padding: 40px 0 50px 0;
     display: flex;
     color: #fff;
     max-width: 880px;
@@ -9,6 +9,7 @@
 @media screen and (max-width:879px) {
     .user {
         max-width: calc(100% - 38px);
+        padding: 0;
     }
 }
 

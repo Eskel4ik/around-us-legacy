@@ -6,6 +6,7 @@
     align-self: center;
     margin-left: auto;
     cursor: pointer;
+    border-radius: 2px;
 }
 
 .user__add-button:hover {

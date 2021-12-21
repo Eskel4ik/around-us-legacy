@@ -7,14 +7,14 @@ let inputInfo = document.querySelector('.popup__input_value_about');
 let userInfo = document.querySelector('.user__info');
 
 function editProfileWindow() {
-    popupWindow.classList.toggle('popup_visibility_visible');
+    popupWindow.classList.toggle('popup_visible');
     inputName.value = userName.textContent;
     inputInfo.value = userInfo.textContent;
 }
 editButton.addEventListener('click', editProfileWindow);
 
 function closePopup() {
-    popupWindow.classList.toggle('popup_visibility_visible');
+    popupWindow.classList.toggle('popup_visible');
 }
 
 closeButton.addEventListener('click', closePopup);
@@ -23,6 +23,6 @@ function formSubmit(event) {
     event.preventDefault();
     userName.textContent = inputName.value;
     userInfo.textContent = inputInfo.value;
-    popupWindow.classList.toggle('popup_visibility_visible');
+    popupWindow.classList.toggle('popup_visible');
 }
 popupWindow.addEventListener('submit', formSubmit);

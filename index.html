@@ -29,65 +29,48 @@
         </button>
         </section>
         <section class="gallery">
-            <div class="gallery__card">
-                <img class="gallery__picture" src="./images/yosemitevalley.png" alt="yosemit valley pic">
-                <div class="gallery__text-container">
-                    <h2 class="gallery__text">Yosemite Valley</h2>
-                    <button class="gallery__like-button" type="button" aria-label="Like!"></button>
-                </div>
-            </div>
-            <div class="gallery__card">
-                <img class="gallery__picture" src="./images/lake_louise.png" alt="yosemit valley pic">
-                <div class="gallery__text-container">
-                    <h2 class="gallery__text">Lake Louise</h2>
-                    <button class="gallery__like-button" type="button" aria-label="Like!"></button>
-                </div>
-            </div>
-            <div class="gallery__card">
-                <img class="gallery__picture" src="./images/bald_mountains.png" alt="yosemit valley pic">
-                <div class="gallery__text-container">
-                    <h2 class="gallery__text">Bald Mountains</h2>
-                    <button class="gallery__like-button" type="button" aria-label="Like!"></button>
-                </div>
-            </div>
-            <div class="gallery__card">
-                <img class="gallery__picture" src="./images/latemar.png" alt="yosemit valley pic">
-                <div class="gallery__text-container">
-                    <h2 class="gallery__text">Latemar</h2>
-                    <button class="gallery__like-button" type="button" aria-label="Like!"></button>
-                </div>
-            </div>
-            <div class="gallery__card">
-                <img class="gallery__picture" src="./images/vanoice.png" alt="yosemit valley pic">
-                <div class="gallery__text-container">
-                    <h2 class="gallery__text">Vanoise National Park</h2>
-                    <button class="gallery__like-button" type="button" aria-label="Like!"></button>
-                </div>
-            </div>
-            <div class="gallery__card">
-                <img class="gallery__picture" src="./images/lago_di_braies.png" alt="yosemit valley pic">
-                <div class="gallery__text-container">
-                    <h2 class="gallery__text">Lago di Braies</h2>
-                    <button class="gallery__like-button" type="button" aria-label="Like!"></button>
-                </div>
-            </div>
         </section>
     </main>
     <footer class="footer">
         <p class="footer__text">&copy; 2021 Around The U.S.</p>
     </footer>
     <div class="popup">
-        <div class="popup__container">
-            <button class="popup__close-button" type="button"><img class="popup__close-button-icon" src="./images/addButton.svg" alt="cross icon"></button>
-            <form class="popup__form" action="#" name="Edit profile">
-                <h3 class="popup__title">Edit profile</h3>
+        <div class="popup__container popup__edit-container">
+            <button class="popup__close-button popup__close-button_type_edit" type="button"><img class="popup__close-button-icon" src="./images/addButton.svg" alt="cross icon"></button>
+            <form class="popup__form popup__form-profile" action="#" name="Edit profile">
+                <h2 class="popup__title">Edit profile</h2>
                 <input class="popup__input popup__input_value_name" type="text" name="name" placeholder="Your name">
                 <input class="popup__input popup__input_value_about" type="text" name="about" placeholder="About me">
                 <button class="popup__button" type="submit" aria-label="Save changes">Save</button>
             </form>
         </div>
+        <div class="popup__container popup__add-container">
+            <button class="popup__close-button popup__close-button_type_add" type="button"><img class="popup__close-button-icon" src="./images/addButton.svg" alt="cross icon"></button>
+            <form class="popup__form popup__form-place" action="#" name="New place">
+                <h2 class="popup__title">New place</h2>
+                <input class="popup__input popup__input_value_title" type="text" name="title" placeholder="Title">
+                <input class="popup__input popup__input_value_url" type="text" name="url" placeholder="Image URL">
+                <button class="popup__button" type="submit" aria-label="Save changes">Save</button>
+            </form>
+        </div>
+        <div class="popup__image-container">
+            <button class="popup__close-button popup__close-button_type_image" type="button"><img class="popup__close-button-icon" src="./images/addButton.svg" alt="cross icon"></button>
+            <img class="popup__image" src="" alt="">
+            <h2 class="popup__image-text"></h2>
+        </div>
     </div>
+    <template id="card-template">
+        <div class="gallery__card">
+            <button class="gallery__delete-button" type="button" aria-label="Delete card"></button>
+            <img class="gallery__picture" src="">
+            <div class="gallery__text-container">
+                <h2 class="gallery__text"></h2>
+                <button class="gallery__like-button" type="button" aria-label="Like!"></button>
+            </div>
+        </div>
+    </template>
     <script src="./scripts/script.js"></script>
+
 </body>
 
 </html>

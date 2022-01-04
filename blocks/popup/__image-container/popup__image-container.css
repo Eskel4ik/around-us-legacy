@@ -1,0 +1,11 @@
+.popup__image-container {
+    visibility: hidden;
+    position: relative;
+    max-width: 75vw;
+    width: fit-content;
+    height: fit-content;
+    max-height: 75vh;
+    background-color: transparent;
+    border-radius: 0;
+    padding: 0;
+}

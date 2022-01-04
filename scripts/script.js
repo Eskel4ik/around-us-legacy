@@ -3,13 +3,16 @@ let popupProfile = document.querySelector('.popup__form-profile');
 let popupPlace = document.querySelector('.popup__form-place');
 let editButton = document.querySelector('.user__edit-button');
 let addPlaceButton = document.querySelector('.user__add-button');
-let closeButton = document.querySelector('.popup__close-button');
+let closeButton = document.querySelector('.popup__close-button_object_form');
+let closeImageButton = document.querySelector('.popup__close-button_object_image');
 let inputName = document.querySelector('.popup__input_value_name');
 let userName = document.querySelector('.user__name');
 let inputTitle = document.querySelector('.popup__input_value_title');
 let inputUrl = document.querySelector('.popup__input_value_url');
 let inputInfo = document.querySelector('.popup__input_value_about');
 let userInfo = document.querySelector('.user__info');
+let popupContainer = document.querySelector('.popup__container');
+let popupImageContainer = document.querySelector('.popup__image-container');
 
 function editProfileWindow() {
     popupWindow.classList.add('popup_visible');
@@ -104,6 +107,18 @@ function placeFormSubmit(event) {
         const parent = eventTarget.parentNode;
         parent.remove();
     });
+    const imageView = document.querySelectorAll('.gallery__picture');
+    imageView.forEach(item => {
+        item.addEventListener('click', function(evt) {
+            const eventTarget = evt.target;
+            let elementPic = document.querySelector('.popup__image');
+            elementPic.src = eventTarget.src;
+            let elementText = document.querySelector('.popup__image-text');
+            elementText.textContent = eventTarget.parentNode.textContent;
+            popupWindow.classList.add('popup_visible');
+            popupImageContainer.style.visibility = "visible";
+        });
+    });
     popupWindow.classList.remove('popup_visible');
     popupPlace.classList.remove('popup__form_display_flex');
 }
@@ -125,3 +140,26 @@ deleteButton.forEach(item => {
         parent.remove();
     });
 });
+const imageView = document.querySelectorAll('.gallery__picture');
+imageView.forEach(item => {
+    item.addEventListener('click', function(evt) {
+        const eventTarget = evt.target;
+        let elementPic = document.querySelector('.popup__image');
+        elementPic.src = eventTarget.src;
+        let elementText = document.querySelector('.popup__image-text');
+        elementText.textContent = eventTarget.parentNode.textContent;
+        popupWindow.classList.add('popup_visible');
+        popupImageContainer.style.visibility = "visible";
+    });
+});
+
+function closePopupImage() {
+    popupImageContainer.style.visibility = "hidden";
+    popupWindow.classList.remove('popup_visible');
+    let elementPic = document.querySelector('.popup__image');
+    elementPic.src = "";
+    let elementText = document.querySelector('.popup__image-text');
+    elementText.textContent = "";
+}
+
+closeImageButton.addEventListener('click', closePopupImage);

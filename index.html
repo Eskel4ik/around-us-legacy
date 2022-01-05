@@ -34,8 +34,8 @@
     <footer class="footer">
         <p class="footer__text">&copy; 2021 Around The U.S.</p>
     </footer>
-    <div class="popup">
-        <div class="popup__container popup__edit-container">
+    <section class="popup popup_type_profile">
+        <div class="popup__form-container">
             <button class="popup__close-button popup__close-button_type_edit" type="button"><img class="popup__close-button-icon" src="./images/addButton.svg" alt="cross icon"></button>
             <form class="popup__form popup__form-profile" action="#" name="Edit profile">
                 <h2 class="popup__title">Edit profile</h2>
@@ -44,8 +44,10 @@
                 <button class="popup__button" type="submit" aria-label="Save changes">Save</button>
             </form>
         </div>
-        <div class="popup__container popup__add-container">
-            <button class="popup__close-button popup__close-button_type_add" type="button"><img class="popup__close-button-icon" src="./images/addButton.svg" alt="cross icon"></button>
+    </section>
+    <section class="popup popup_type_addCard">
+        <div class="popup__form-container">
+            <button class="popup__close-button popup__close-button_type_addCard" type="button"><img class="popup__close-button-icon" src="./images/addButton.svg" alt="cross icon"></button>
             <form class="popup__form popup__form-place" action="#" name="New place">
                 <h2 class="popup__title">New place</h2>
                 <input class="popup__input popup__input_value_title" type="text" name="title" placeholder="Title">
@@ -53,12 +55,14 @@
                 <button class="popup__button" type="submit" aria-label="Save changes">Save</button>
             </form>
         </div>
-        <div class="popup__image-container">
+    </section>
+    <section class="popup popup_type_image">
+        <div class="popup__content-container">
             <button class="popup__close-button popup__close-button_type_image" type="button"><img class="popup__close-button-icon" src="./images/addButton.svg" alt="cross icon"></button>
             <img class="popup__image" src="data:," alt="Alternative text">
             <h2 class="popup__image-text"></h2>
         </div>
-    </div>
+    </section>
     <template id="card-template">
         <div class="gallery__card">
             <button class="gallery__delete-button" type="button" aria-label="Delete card"></button>

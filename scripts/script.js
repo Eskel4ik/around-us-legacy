@@ -69,16 +69,16 @@ function createCard(card) {
         const eventTarget = evt.target;
         elementPic.src = eventTarget.src;
         elementPic.alt = `${card.name} photo`;
-        elementText.textContent = eventTarget.parentNode.textContent;
+        elementText.textContent = card.name;
         openPopup(popupTypeImage);
     });
-    //once for add card form
-    popupTypeAddCard.addEventListener('submit', handleAddCardFormSubmit);
     return cardElement;
 }
 
 editButton.addEventListener('click', () => {
     openPopup(popupTypeProfile);
+    inputName.value = userName.textContent;
+    inputInfo.value = userInfo.textContent;
 });
 closeEditButton.addEventListener('click', () => {
     closePopup(popupTypeProfile)
@@ -101,8 +101,6 @@ function handleProfileFormSubmit(event) {
     userInfo.textContent = inputInfo.value;
     closePopup(popupTypeProfile);
 }
-//once for profile popup
-popupTypeProfile.addEventListener('submit', handleProfileFormSubmit);
 
 function handleAddCardFormSubmit(event) {
     event.preventDefault();
@@ -111,6 +109,8 @@ function handleAddCardFormSubmit(event) {
     addCardForm.reset();
     closePopup(popupTypeAddCard);
 }
+popupTypeProfile.addEventListener('submit', handleProfileFormSubmit);
+popupTypeAddCard.addEventListener('submit', handleAddCardFormSubmit);
 initialCards.forEach(card => {
     const cardAdd = createCard(card);
     galleryWindow.prepend(cardAdd);

@@ -43,13 +43,16 @@ const userInfo = document.querySelector('.user__info');
 const cardTemplate = document.querySelector("#card-template").content;
 const elementPic = document.querySelector('.popup__image');
 const elementText = document.querySelector('.popup__image-text');
+const popupElements = document.querySelectorAll('.popup');
 
 function openPopup(popup) {
     popup.classList.add('popup_visible');
+    document.addEventListener('keydown', escapeButtonHandler);
 }
 
 function closePopup(popup) {
     popup.classList.remove('popup_visible');
+    document.removeEventListener('keydown', escapeButtonHandler);
 }
 
 function createCard(card) {
@@ -115,3 +118,20 @@ initialCards.forEach(card => {
     const cardAdd = createCard(card);
     galleryWindow.prepend(cardAdd);
 });
+
+popupElements.forEach((popup) => {
+    popup.addEventListener("click", (evt) => {
+        if (evt.target.classList.contains('popup_visible')) {
+            closePopup(popup);
+        } else if (evt.target.classList.contains('popup__close-button')) {
+            closePopup(popup);
+        }
+    });
+});
+
+function escapeButtonHandler(event) {
+    if (event.key === 'Escape') {
+        const openedPopup = document.querySelector(".popup_visible");
+        closePopup(openedPopup);
+    }
+}

@@ -39,8 +39,10 @@
             <button class="popup__close-button popup__close-button_type_edit" type="button"><img class="popup__close-button-icon" src="./images/addButton.svg" alt="cross icon"></button>
             <form class="popup__form popup__form-profile" action="#" name="Edit profile">
                 <h2 class="popup__title">Edit profile</h2>
-                <input class="popup__input popup__input_value_name" type="text" name="name" placeholder="Your name">
-                <input class="popup__input popup__input_value_about" type="text" name="about" placeholder="About me">
+                <input class="popup__input popup__input_value_name" id="name-input" type="text" name="name" placeholder="Your name" minlength="2" maxlength="40" required>
+                <span class="popup__error name-input-error"></span>
+                <input class="popup__input popup__input_value_about" id="about-input" type="text" name="about" placeholder="About me" minlength="2" maxlength="200" required>
+                <span class="popup__error_profile-about popup__error about-input-error"></span>
                 <button class="popup__button" type="submit" aria-label="Save changes">Save</button>
             </form>
         </div>
@@ -48,10 +50,12 @@
     <section class="popup popup_type_addCard">
         <div class="popup__form-container">
             <button class="popup__close-button popup__close-button_type_addCard" type="button"><img class="popup__close-button-icon" src="./images/addButton.svg" alt="cross icon"></button>
-            <form class="popup__form popup__form-addCard" action="#" name="New place">
+            <form class="popup__form popup__form-addCard" action="#" name="New place" novalidate>
                 <h2 class="popup__title">New place</h2>
-                <input class="popup__input popup__input_value_title" type="text" name="title" placeholder="Title">
-                <input class="popup__input popup__input_value_url" type="text" name="url" placeholder="Image URL">
+                <input class="popup__input popup__input_value_title" id="title-input" type="text" name="title" placeholder="Title" minlength="1" maxlength="30" required>
+                <span class="popup__error_addCard-name popup__error title-input-error"></span>
+                <input class="popup__input popup__input_value_url" id="url-input" type="url" name="url" placeholder="Image URL" required>
+                <span class="popup__error_addCard-url popup__error url-input-error"></span>
                 <button class="popup__button" type="submit" aria-label="Save changes">Save</button>
             </form>
         </div>
@@ -74,7 +78,7 @@
         </div>
     </template>
     <script src="./scripts/script.js"></script>
-
+    <script src="./scripts/validate.js"></script>
 </body>
 
 </html>

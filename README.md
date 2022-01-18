@@ -1,4 +1,4 @@
-# Project 4: Around The U.S.
+# Project 4-6: Around The U.S.
 This is my project page of social network with photo gallery.
 
 ### Overview

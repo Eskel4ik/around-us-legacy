@@ -48,6 +48,11 @@ const popupElements = document.querySelectorAll('.popup');
 function openPopup(popup) {
     popup.classList.add('popup_visible');
     document.addEventListener('keydown', escapeButtonHandler);
+    const popupSubmitButton = popup.querySelector('.popup__button');
+    if (popup.contains(popupSubmitButton)) {
+        popupSubmitButton.disabled = true;
+        popupSubmitButton.classList.add('popup__button_disabled');
+    }
 }
 
 function closePopup(popup) {

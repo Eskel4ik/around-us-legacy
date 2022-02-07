@@ -4,7 +4,8 @@ This is my project page of social network with photo gallery.
 ### Overview
 
 * Project contain a single web page with user profile with short gallery of pictures cards. 
-* HTML markup with CSS styling used, also added some functionality to buttons and user's texts with JS.
+* HTML markup with CSS styling is used
+* Added popup forms with realtime validation, using JS.
 
 * [Link to the project in GitHub Pages](https://eskel4ik.github.io/web_project_4/index.html)
 

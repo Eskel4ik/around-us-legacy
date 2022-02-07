@@ -10,7 +10,7 @@ import FormValidator from "./formValidator.js";
 
 //exports
 
-export { popupTypeImage, };
+export { popupTypeImage, elementPic, elementText };
 
 //page settings
 
@@ -69,6 +69,8 @@ const inputInfo = document.querySelector('.popup__input_value_about');
 const userInfo = document.querySelector('.user__info');
 const popupElements = document.querySelectorAll('.popup');
 const addCardForm = document.querySelector('.popup__form-addCard');
+const elementPic = document.querySelector('.popup__image');
+const elementText = document.querySelector('.popup__image-text');
 
 //functions
 

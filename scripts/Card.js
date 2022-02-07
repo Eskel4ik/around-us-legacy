@@ -1,6 +1,6 @@
 //imports 
 import { openPopup } from "./utils.js";
-import { popupTypeImage } from "./index.js";
+import { popupTypeImage, elementPic, elementText } from "./index.js";
 
 //exports
 export default class Card {
@@ -25,8 +25,6 @@ export default class Card {
     }
     _handleImagePopup(evt) {
         const eventTarget = evt.target;
-        const elementPic = document.querySelector('.popup__image');
-        const elementText = document.querySelector('.popup__image-text');
         elementPic.src = eventTarget.src;
         elementPic.alt = eventTarget.alt;
         elementText.textContent = this._name;

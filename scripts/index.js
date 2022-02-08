@@ -55,6 +55,7 @@ const initialCards = [{
 
 const galleryWindow = document.querySelector('.gallery');
 const cardTemplate = document.querySelector("#card-template").content;
+const editForm = document.querySelector('.popup__form-profile');
 const editButton = document.querySelector('.user__edit-button');
 const closeEditButton = document.querySelector('.popup__close-button_type_edit');
 const addCardButton = document.querySelector('.user__add-button');
@@ -71,8 +72,26 @@ const popupElements = document.querySelectorAll('.popup');
 const addCardForm = document.querySelector('.popup__form-addCard');
 const elementPic = document.querySelector('.popup__image');
 const elementText = document.querySelector('.popup__image-text');
+const inputTitle = document.querySelector('.popup__input_value_title');
+const inputUrl = document.querySelector('.popup__input_value_url');
+
+//validators
+
+const popupAddCard = new FormValidator(pageSettings, addCardForm);
+popupAddCard.enableValidation();
+popupAddCard.resetValidation();
+
+const popupProfile = new FormValidator(pageSettings, editForm);
+popupProfile.enableValidation();
+popupProfile.resetValidation();
 
 //functions
+
+function createCard(item) {
+    const card = new Card(item, cardTemplate);
+    const cardElement = card.generateCard();
+    return cardElement;
+}
 
 function handleProfileFormSubmit(evt) {
     evt.preventDefault();
@@ -83,14 +102,12 @@ function handleProfileFormSubmit(evt) {
 
 function handleAddCardFormSubmit(evt) {
     evt.preventDefault();
-    const inputTitle = document.querySelector('.popup__input_value_title');
-    const inputUrl = document.querySelector('.popup__input_value_url');
     const cardData = {
         name: `${inputTitle.value}`,
         link: `${inputUrl.value}`
     };
-    const cardElement = new Card(cardData, cardTemplate);
-    galleryWindow.prepend(cardElement.generateCard());
+    const cardElement = createCard(cardData);
+    galleryWindow.prepend(cardElement);
     addCardForm.reset();
     closePopup(popupTypeAddCard);
 }
@@ -99,9 +116,6 @@ function handleAddCardFormSubmit(evt) {
 
 editButton.addEventListener('click', () => {
     openPopup(popupTypeProfile);
-    const editForm = document.querySelector('.popup__form-profile');
-    const popupProfile = new FormValidator(pageSettings, editForm);
-    popupProfile.enableValidation();
     inputName.value = userName.textContent;
     inputInfo.value = userInfo.textContent;
 });
@@ -112,8 +126,6 @@ closeEditButton.addEventListener('click', () => {
 
 addCardButton.addEventListener('click', () => {
     openPopup(popupTypeAddCard);
-    const popupAddCard = new FormValidator(pageSettings, addCardForm);
-    popupAddCard.enableValidation();
 });
 
 closeAddButton.addEventListener('click', () => {
@@ -139,7 +151,6 @@ popupElements.forEach((popup) => {
 });
 
 initialCards.forEach((item) => {
-    const card = new Card(item, cardTemplate);
-    const cardElement = card.generateCard();
+    const cardElement = createCard(item);
     galleryWindow.append(cardElement);
 });

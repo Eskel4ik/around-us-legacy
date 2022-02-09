@@ -16,7 +16,7 @@ export default class Card {
         return this._element;
     }
     _handleLikeButton() {
-        this._button.classList.toggle('gallery__like-button_active');
+        this._likeButton.classList.toggle('gallery__like-button_active');
     }
     _handleDeleteButton() {
         const card = this._element;
@@ -30,19 +30,19 @@ export default class Card {
         openPopup(popupTypeImage);
     }
     _setEventListeners() {
-        this._element.querySelector('.gallery__like-button').addEventListener('click', () => {
+        this._likeButton.addEventListener('click', () => {
             this._handleLikeButton();
         });
         this._element.querySelector('.gallery__delete-button').addEventListener('click', () => {
             this._handleDeleteButton();
         });
-        this._element.querySelector('.gallery__picture').addEventListener('click', (evt) => {
+        this._cardPicture.addEventListener('click', (evt) => {
             this._handleImagePopup(evt);
         });
     }
     generateCard() {
         this._element = this._getTemplate();
-        this._button = this._element.querySelector('.gallery__like-button');
+        this._likeButton = this._element.querySelector('.gallery__like-button');
         this._cardPicture = this._element.querySelector('.gallery__picture');
         this._setEventListeners();
         this._element.querySelector('.gallery__text').textContent = this._name;

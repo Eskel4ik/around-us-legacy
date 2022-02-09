@@ -79,11 +79,9 @@ const inputUrl = document.querySelector('.popup__input_value_url');
 
 const popupAddCard = new FormValidator(pageSettings, addCardForm);
 popupAddCard.enableValidation();
-popupAddCard.resetValidation();
 
 const popupProfile = new FormValidator(pageSettings, editForm);
 popupProfile.enableValidation();
-popupProfile.resetValidation();
 
 //functions
 
@@ -115,6 +113,7 @@ function handleAddCardFormSubmit(evt) {
 //event listeners
 
 editButton.addEventListener('click', () => {
+    popupProfile.resetValidation();
     openPopup(popupTypeProfile);
     inputName.value = userName.textContent;
     inputInfo.value = userInfo.textContent;
@@ -125,7 +124,9 @@ closeEditButton.addEventListener('click', () => {
 });
 
 addCardButton.addEventListener('click', () => {
+    popupAddCard.resetValidation();
     openPopup(popupTypeAddCard);
+
 });
 
 closeAddButton.addEventListener('click', () => {
@@ -134,8 +135,6 @@ closeAddButton.addEventListener('click', () => {
 
 closeImageButton.addEventListener('click', () => {
     closePopup(popupTypeImage);
-    elementPic.src = "";
-    elementText.textContent = "";
 });
 
 popupTypeProfile.addEventListener('submit', handleProfileFormSubmit);

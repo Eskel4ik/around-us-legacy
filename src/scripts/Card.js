@@ -1,13 +1,10 @@
-//imports 
-import { openPopup } from "./utils.js";
-import { popupTypeImage, elementPic, elementText } from "./index.js";
-
-//exports
 export default class Card {
-    constructor(data, cardSelector) {
+    constructor({ data, handleCardClick }, cardSelector) {
+        this._data = data;
         this._cardSelector = cardSelector;
-        this._name = data.name;
-        this._link = data.link;
+        this._name = this._data.name;
+        this._link = this._data.link;
+        this.handleCardClick = handleCardClick;
     }
     _getTemplate() {
         this._element = this._cardSelector
@@ -19,16 +16,16 @@ export default class Card {
         this._likeButton.classList.toggle('gallery__like-button_active');
     }
     _handleDeleteButton() {
-        const card = this._element;
-        card.remove();
-    }
-    _handleImagePopup(evt) {
-        const eventTarget = evt.target;
-        elementPic.src = eventTarget.src;
-        elementPic.alt = eventTarget.alt;
-        elementText.textContent = this._name;
-        openPopup(popupTypeImage);
-    }
+            const card = this._element;
+            card.remove();
+        }
+        /*_handleImagePopup(evt) {
+            const eventTarget = evt.target;
+            elementPic.src = eventTarget.src;
+            elementPic.alt = eventTarget.alt;
+            elementText.textContent = this._name;
+            openPopup(popupTypeImage);
+        }*/
     _setEventListeners() {
         this._likeButton.addEventListener('click', () => {
             this._handleLikeButton();
@@ -36,9 +33,7 @@ export default class Card {
         this._element.querySelector('.gallery__delete-button').addEventListener('click', () => {
             this._handleDeleteButton();
         });
-        this._cardPicture.addEventListener('click', (evt) => {
-            this._handleImagePopup(evt);
-        });
+        this._cardPicture.addEventListener('click', this.handleCardClick);
     }
     generateCard() {
         this._element = this._getTemplate();
@@ -47,7 +42,7 @@ export default class Card {
         this._setEventListeners();
         this._element.querySelector('.gallery__text').textContent = this._name;
         this._cardPicture.src = `${this._link}`;
-        this._cardPicture.alt = `${this._name} photo`;
+        this._cardPicture.alt = `${this._name}`;
         return this._element;
     }
 }

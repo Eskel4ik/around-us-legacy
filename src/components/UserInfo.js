@@ -4,7 +4,7 @@ export default class UserInfo {
         this._about = userInfo;
     }
     getUserInfo() {
-        this._userData = { name: `${this._name.textContent}`, about: `${this._about.textContent}` };
+        this._userData = { name: this._name.textContent, about: this._about.textContent };
         return this._userData;
     }
     setUserInfo(data) {

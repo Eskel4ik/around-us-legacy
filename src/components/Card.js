@@ -1,10 +1,9 @@
 export default class Card {
-    constructor({ data, handleCardClick }, cardSelector) {
-        this._data = data;
+    constructor({ item, handleCardClick }, cardSelector) {
         this._cardSelector = cardSelector;
-        this._name = this._data.name;
-        this._link = this._data.link;
-        this.handleCardClick = handleCardClick;
+        this._name = item.name;
+        this._link = item.link;
+        this._handleCardClick = handleCardClick;
     }
     _getTemplate() {
         this._element = this._cardSelector
@@ -16,16 +15,9 @@ export default class Card {
         this._likeButton.classList.toggle('gallery__like-button_active');
     }
     _handleDeleteButton() {
-            const card = this._element;
-            card.remove();
-        }
-        /*_handleImagePopup(evt) {
-            const eventTarget = evt.target;
-            elementPic.src = eventTarget.src;
-            elementPic.alt = eventTarget.alt;
-            elementText.textContent = this._name;
-            openPopup(popupTypeImage);
-        }*/
+        const card = this._element;
+        card.remove();
+    }
     _setEventListeners() {
         this._likeButton.addEventListener('click', () => {
             this._handleLikeButton();
@@ -33,7 +25,7 @@ export default class Card {
         this._element.querySelector('.gallery__delete-button').addEventListener('click', () => {
             this._handleDeleteButton();
         });
-        this._cardPicture.addEventListener('click', this.handleCardClick);
+        this._cardPicture.addEventListener('click', this._handleCardClick);
     }
     generateCard() {
         this._element = this._getTemplate();

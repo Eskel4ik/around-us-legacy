@@ -25,7 +25,10 @@ export default class Card {
         this._element.querySelector('.gallery__delete-button').addEventListener('click', () => {
             this._handleDeleteButton();
         });
-        this._cardPicture.addEventListener('click', this._handleCardClick);
+        this._cardPicture.addEventListener('click', () => this._handleCardClick({
+            name: this._name,
+            link: this._link
+        }));
     }
     generateCard() {
         this._element = this._getTemplate();
@@ -33,8 +36,8 @@ export default class Card {
         this._cardPicture = this._element.querySelector('.gallery__picture');
         this._setEventListeners();
         this._element.querySelector('.gallery__text').textContent = this._name;
-        this._cardPicture.src = `${this._link}`;
-        this._cardPicture.alt = `${this._name}`;
+        this._cardPicture.src = this._link;
+        this._cardPicture.alt = this._name;
         return this._element;
     }
 }

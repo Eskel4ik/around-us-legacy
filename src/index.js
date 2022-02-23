@@ -14,15 +14,12 @@ import {
 
 //variables
 
-const galleryWindow = document.querySelector('.gallery');
 const cardTemplate = document.querySelector("#card-template").content;
 const editForm = document.querySelector('.popup__form-profile');
 const editButton = document.querySelector('.user__edit-button');
 const addCardButton = document.querySelector('.user__add-button');
 const inputName = document.querySelector('.popup__input_value_name');
-const userName = document.querySelector('.user__name');
 const inputInfo = document.querySelector('.popup__input_value_about');
-const userInfo = document.querySelector('.user__info');
 const addCardForm = document.querySelector('.popup__form-addCard');
 
 //class instances
@@ -36,15 +33,15 @@ popupAddCardForm.setEventListeners();
 const popupImage = new PopupWithImage('.popup_type_image');
 popupImage.setEventListeners();
 
-const initialGallery = new Section({
+const pageGallery = new Section({
     items: initialCards,
     renderer: (item) => {
-        initialGallery.addItem(createCard({ item }));
+        pageGallery.addItem(createCard({ item }));
     }
 }, '.gallery');
-initialGallery.renderItems();
+pageGallery.renderItems();
 
-const userInfoInstance = new UserInfo({ userName, userInfo });
+const userInfoInstance = new UserInfo({ userName: '.user__name', userInfo: '.user__info' });
 
 //validators
 
@@ -59,8 +56,8 @@ popupProfile.enableValidation();
 function createCard({ item }) {
     const card = new Card({
             item,
-            handleCardClick: () => {
-                popupImage.open({ item });
+            handleCardClick: ({ name, link }) => {
+                popupImage.open({ name, link });
             }
         },
         cardTemplate);
@@ -75,7 +72,7 @@ function handleProfileFormSubmit() {
 function handleAddCardFormSubmit() {
     const getValues = popupAddCardForm._getInputValues();
     const item = { name: getValues.title, link: getValues.url };
-    galleryWindow.prepend(createCard({ item }));
+    pageGallery.addItem(createCard({ item }));
     addCardForm.reset();
 }
 

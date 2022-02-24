@@ -1,12 +1,12 @@
 export default class Card {
-    constructor({ item, handleCardClick }, cardSelector) {
-        this._cardSelector = cardSelector;
+    constructor({ item, handleCardClick }, templateSelector) {
+        this._templateSelector = templateSelector;
         this._name = item.name;
         this._link = item.link;
         this._handleCardClick = handleCardClick;
     }
     _getTemplate() {
-        this._element = this._cardSelector
+        this._element = this._templateSelector
             .querySelector('.gallery__card')
             .cloneNode(true);
         return this._element;

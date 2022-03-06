@@ -7,6 +7,7 @@ import Section from "./components/Section.js";
 import PopupWithImage from "./components/PopupWithImage.js";
 import PopupWithForm from "./components/PopupWithForm.js";
 import UserInfo from "./components/UserInfo.js";
+import Api from "./components/Api.js";
 import {
     pageSettings,
     initialCards
@@ -22,8 +23,16 @@ const inputName = document.querySelector('.popup__input_value_name');
 const inputInfo = document.querySelector('.popup__input_value_about');
 const addCardForm = document.querySelector('.popup__form-addCard');
 
-//class instances
 
+//class instances
+const api = new Api({
+    baseUrl: "https://around.nomoreparties.co/v1/group-12",
+    headers: {
+        authorization: "302ca387-b31a-4cb2-8cb9-197e187dc382",
+        "Content-Type": "application/json"
+    }
+});
+console.log(api.getUserInfo());
 const popupEditProfile = new PopupWithForm('.popup_type_profile', handleProfileFormSubmit);
 popupEditProfile.setEventListeners();
 
@@ -41,7 +50,8 @@ const pageGallery = new Section({
 }, '.gallery');
 pageGallery.renderItems();
 
-const userInfoInstance = new UserInfo({ userName: '.user__name', userInfo: '.user__info' });
+const userInfoInstance = new UserInfo({ userName: '.user__name', userInfo: '.user__info', avatar: '.user__avatar' });
+userInfoInstance.setUserInfo(api.getUserInfo());
 
 //validators
 

@@ -171,5 +171,6 @@ addCardButton.addEventListener('click', () => {
     popupAddCardForm.open();
 });
 userAvatar.addEventListener('click', () => {
+    avatarPopup.resetValidation();
     popupForAvatar.open();
 });

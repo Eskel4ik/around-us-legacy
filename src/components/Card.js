@@ -9,6 +9,7 @@ export default class Card {
         this._handleCardClick = handleCardClick;
         this._handleDeleteClick = handleDeleteClick;
         this._handleLikeClick = handleLikeClick;
+        this._item = item;
     }
     _countLike() {
         if (this._likes.length < 1) {
@@ -17,9 +18,14 @@ export default class Card {
             this._likeCounter.textContent = this._likes.length;
         }
     }
-    compareID(info) {
+    _checkInitialLike(data) {
+        if (this._likes.some(item => item._id == data._id)) {
+            this._likeButton.classList.add('gallery__like-button_active');
+        }
+    }
+    _compareID(data) {
         this._deleteButton = this._element.querySelector('.gallery__delete-button');
-        if (this._ownerId !== info._id) {
+        if (this._ownerId !== data._id) {
             this._deleteButton.style.display = 'none';
         }
     }
@@ -31,30 +37,32 @@ export default class Card {
     }
     _handleLikeButton() {
         this._likeButton.classList.toggle('gallery__like-button_active');
-        this._handleLikeClick(this._id);
+        this._handleLikeClick(this);
     }
     _setEventListeners() {
         this._likeButton.addEventListener('click', () => {
             this._handleLikeButton();
         });
         this._element.querySelector('.gallery__delete-button').addEventListener('click', () => {
-            this._handleDeleteClick();
+            this._handleDeleteClick(this);
         });
         this._cardPicture.addEventListener('click', () => this._handleCardClick({
             name: this._name,
             link: this._link
         }));
     }
-    generateCard() {
+    generateCard(data) {
         this._element = this._getTemplate();
         this._likeButton = this._element.querySelector('.gallery__like-button');
         this._cardPicture = this._element.querySelector('.gallery__picture');
         this._likeCounter = this._element.querySelector('.gallery__like-counter');
         this._setEventListeners();
+        this._compareID(data);
+        this._checkInitialLike(data);
+        this._countLike();
         this._element.querySelector('.gallery__text').textContent = this._name;
         this._cardPicture.src = this._link;
         this._cardPicture.alt = this._name;
-        this._countLike();
         return this._element;
     }
 }

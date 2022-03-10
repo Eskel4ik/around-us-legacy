@@ -66,14 +66,25 @@ export default class Api {
             });
     }
     deleteCard(data) {
-        return fetch(`${this._baseUrl}/cards/${data}`, {
+        return fetch(`${this._baseUrl}/cards/${data._id}`, {
             method: "DELETE",
             headers: this._headers,
         });
     }
     likeAdd(data) {
-        return fetch(`${this._baseUrl}/cards/likes/${data}`, {
+        return fetch(`${this._baseUrl}/cards/likes/${data._id}`, {
             method: "PUT",
+            headers: this._headers,
+        }).then(res => {
+            if (res.ok) {
+                return res.json();
+            }
+            return Promise.reject(`Error: ${res.status}`);
+        })
+    }
+    likeDelete(data) {
+        return fetch(`${this._baseUrl}/cards/likes/${data}`, {
+            method: "DELETE",
             headers: this._headers,
         }).then(res => {
             if (res.ok) {

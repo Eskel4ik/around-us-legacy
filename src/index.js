@@ -23,6 +23,7 @@ const inputInfo = document.querySelector('.popup__input_value_about');
 const addCardForm = document.querySelector('.popup__form-addCard');
 const userAvatar = document.querySelector('.user__avatar-wrapper');
 const avatarForm = document.querySelector('.popup__form-avatar');
+let currentUserInfo = {};
 
 //class instances
 const api = new Api({
@@ -73,6 +74,8 @@ api.getUserInfo()
     .then((info) => {
         userInfoInstance.setUserInfo(info);
         userInfoInstance.setUserAvatar(info.avatar);
+        currentUserInfo = info;
+        return currentUserInfo;
     }).catch((err) => {
         console.log(err);
     })
@@ -99,13 +102,7 @@ function createCard({ item }) {
         },
         cardTemplate,
         handleDeleteClick, handleLikeClick);
-    api.getUserInfo()
-        .then((info) => {
-            card.compareID(info)
-        }).catch((err) => {
-            console.log(err);
-        })
-    const cardElement = card.generateCard();
+    const cardElement = card.generateCard(currentUserInfo);
     return cardElement;
 }
 
@@ -119,26 +116,28 @@ function handleAvatarFormSubmit() {
 }
 
 function handleLikeClick(data) {
-    api.likeAdd(data).then((res) => {
-        const likedUsers = Array.from(res);
-        console.log(res.likes);
-    })
+    api.likeDelete(data._id)
+        .then((res) => {
+            data._likeCounter.textContent = res.likes.length;
+        })
+        .catch((api.likeAdd(data)
+            .then((res) => {
+                data._likeCounter.textContent = res.likes.length;
+            })))
 }
 
-function handleDeleteClick() {
-    deletePopup.openWithData(this._id);
+function handleDeleteClick(data) {
+    deletePopup.openWithData(data);
 }
 
 function handleDeleteCardFormSubmit(data) {
-    api.deleteCard(data);
-    api.getInitialCards()
-        .then((res) => {
-            console.log(res);
+    api.deleteCard(data).then((res) => {
+            data._element.remove();
+            deletePopup.close();
         })
         .catch((err) => {
             console.log(err);
         })
-    deletePopup.close();
 }
 
 function handleProfileFormSubmit() {

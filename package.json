@@ -2,7 +2,7 @@
     "name": "aroundtheus",
     "version": "1.0.0",
     "description": "my project #4-8",
-    "main": "index.js",
+    "main": "./src/pages/index.js",
     "scripts": {
         "build": "webpack --mode production",
         "dev": "webpack serve",

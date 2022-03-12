@@ -36,7 +36,6 @@ export default class Card {
         return this._element;
     }
     _handleLikeButton() {
-        this._likeButton.classList.toggle('gallery__like-button_active');
         this._handleLikeClick(this);
     }
     _setEventListeners() {

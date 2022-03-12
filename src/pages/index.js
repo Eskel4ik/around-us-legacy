@@ -1,16 +1,16 @@
 //imports
-import "./pages/index.css";
+import "./index.css";
 
-import Card from "./components/Card.js";
-import FormValidator from "./components/formValidator.js";
-import Section from "./components/Section.js";
-import PopupWithImage from "./components/PopupWithImage.js";
-import PopupWithForm from "./components/PopupWithForm.js";
-import UserInfo from "./components/UserInfo.js";
-import Api from "./components/Api.js";
+import Card from "../components/Card.js";
+import FormValidator from "../components/formValidator.js";
+import Section from "../components/Section.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js";
+import Api from "../components/Api.js";
 import {
     pageSettings,
-} from "./components/utils/constants.js";
+} from "../utils/constants.js";
 
 //variables
 
@@ -108,21 +108,25 @@ function createCard({ item }) {
 
 function handleAvatarFormSubmit() {
     const data = popupForAvatar._getInputValues();
-    api.editProfilePhoto(data.url)
+    api.editProfilePhoto(data.avatar).then((res) => {
+            userInfoInstance.setUserAvatar(data.avatar);
+            popupForAvatar.close();
+        })
         .catch((err) => {
             console.log(err);
         })
-    userInfoInstance.setUserAvatar(data.url);
 }
 
 function handleLikeClick(data) {
     api.likeDelete(data._id)
         .then((res) => {
             data._likeCounter.textContent = res.likes.length;
+            data._likeButton.classList.remove('gallery__like-button_active');
         })
         .catch((api.likeAdd(data)
             .then((res) => {
                 data._likeCounter.textContent = res.likes.length;
+                data._likeButton.classList.add('gallery__like-button_active');
             })))
 }
 
@@ -142,10 +146,13 @@ function handleDeleteCardFormSubmit(data) {
 
 function handleProfileFormSubmit() {
     api.setUserInfo(popupEditProfile._getInputValues())
+        .then((res) => {
+            userInfoInstance.setUserInfo(popupEditProfile._getInputValues());
+            popupEditProfile.close();
+        })
         .catch((err) => {
             console.log(err);
         })
-    userInfoInstance.setUserInfo(popupEditProfile._getInputValues());
 }
 
 function handleAddCardFormSubmit() {
@@ -153,8 +160,9 @@ function handleAddCardFormSubmit() {
     const data = { name: getValues.title, link: getValues.url };
     api.sendCardData(data).then((item) => {
         pageGallery.addItem(createCard({ item }));
+        popupAddCardForm.close();
+        addCardForm.reset();
     });
-    addCardForm.reset();
 }
 //event listeners
 

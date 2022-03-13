@@ -8,9 +8,3 @@
 .user__avatar-wrapper:hover .user__avatar {
     opacity: .2;
 }
-
-@media screen and (max-width:850px) {
-    .user__avatar {
-        margin-top: 38px;
-    }
-}

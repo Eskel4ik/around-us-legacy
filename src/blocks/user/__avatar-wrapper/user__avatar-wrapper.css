@@ -4,3 +4,9 @@
     position: relative;
     opacity: 1;
 }
+
+@media screen and (max-width:850px) {
+    .user__avatar-wrapper {
+        margin: 38px auto 0 auto;
+    }
+}

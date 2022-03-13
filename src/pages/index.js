@@ -114,14 +114,16 @@ function handleLikeClick(data, isLiked) {
         api.likeDelete(data)
             .then((res) => {
                 data.updateLike(res);
-            }).catch(err => {
+            })
+            .catch(err => {
                 console.log(err);
             })
     } else {
         api.likeAdd(data)
             .then((res) => {
                 data.updateLike(res);
-            }).catch(err => {
+            })
+            .catch(err => {
                 console.log(err);
             })
     }
@@ -155,10 +157,14 @@ function handleProfileFormSubmit() {
 function handleAddCardFormSubmit() {
     const getValues = popupAddCardForm.getInputValues();
     const data = { name: getValues.title, link: getValues.url };
-    api.sendCardData(data).then((item) => {
-        pageGallery.addItem(item);
-        popupAddCardForm.close();
-    });
+    api.sendCardData(data)
+        .then((item) => {
+            pageGallery.addItem(item);
+            popupAddCardForm.close();
+        })
+        .catch((err) => {
+            console.log(err);
+        })
 }
 //event listeners
 

@@ -34,7 +34,6 @@ const api = new Api({
     }
 });
 
-
 const popupEditProfile = new PopupWithForm('.popup_type_profile', handleProfileFormSubmit);
 popupEditProfile.setEventListeners();
 
@@ -53,32 +52,25 @@ popupForAvatar.setEventListeners();
 const pageGallery = new Section({
     items: [],
     renderer: (item) => {
-        pageGallery.addItem(createCard({ item }));
+        return createCard({ item });
     }
 }, '.gallery');
 
-api.getInitialCards()
-    .then((cardData) => {
-        const cards = Array.from(cardData);
-        cards.forEach(item => {
-            pageGallery.addItem(createCard({ item }));
-        });
-    })
-    .catch((err) => {
-        console.log(err);
-    })
-
 const userInfoInstance = new UserInfo({ userName: '.user__name', userInfo: '.user__info' }, '.user__avatar');
 
-api.getUserInfo()
-    .then((info) => {
-        userInfoInstance.setUserInfo(info);
-        userInfoInstance.setUserAvatar(info.avatar);
-        currentUserInfo = info;
-        return currentUserInfo;
-    }).catch((err) => {
-        console.log(err);
+//initialPage
+
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+    .then(([userData, cardData]) => {
+        userInfoInstance.setUserInfo(userData);
+        userInfoInstance.setUserAvatar(userData.avatar);
+        currentUserInfo = userData;
+        pageGallery.renderItems(cardData);
     })
+    .catch(err => {
+        console.log(err);
+    });
+
 
 //validators
 
@@ -107,7 +99,7 @@ function createCard({ item }) {
 }
 
 function handleAvatarFormSubmit() {
-    const data = popupForAvatar._getInputValues();
+    const data = popupForAvatar.getInputValues();
     api.editProfilePhoto(data.avatar).then((res) => {
             userInfoInstance.setUserAvatar(data.avatar);
             popupForAvatar.close();
@@ -117,17 +109,22 @@ function handleAvatarFormSubmit() {
         })
 }
 
-function handleLikeClick(data) {
-    api.likeDelete(data._id)
-        .then((res) => {
-            data._likeCounter.textContent = res.likes.length;
-            data._likeButton.classList.remove('gallery__like-button_active');
-        })
-        .catch((api.likeAdd(data)
+function handleLikeClick(data, isLiked) {
+    if (isLiked) {
+        api.likeDelete(data)
             .then((res) => {
-                data._likeCounter.textContent = res.likes.length;
-                data._likeButton.classList.add('gallery__like-button_active');
-            })))
+                data.updateLike(res);
+            }).catch(err => {
+                console.log(err);
+            })
+    } else {
+        api.likeAdd(data)
+            .then((res) => {
+                data.updateLike(res);
+            }).catch(err => {
+                console.log(err);
+            })
+    }
 }
 
 function handleDeleteClick(data) {
@@ -136,8 +133,8 @@ function handleDeleteClick(data) {
 
 function handleDeleteCardFormSubmit(data) {
     api.deleteCard(data).then((res) => {
-            data._element.remove();
-            deletePopup.close();
+            data.removeCard();
+            deletePopup.close('Yes');
         })
         .catch((err) => {
             console.log(err);
@@ -145,9 +142,9 @@ function handleDeleteCardFormSubmit(data) {
 }
 
 function handleProfileFormSubmit() {
-    api.setUserInfo(popupEditProfile._getInputValues())
+    api.setUserInfo(popupEditProfile.getInputValues())
         .then((res) => {
-            userInfoInstance.setUserInfo(popupEditProfile._getInputValues());
+            userInfoInstance.setUserInfo(res);
             popupEditProfile.close();
         })
         .catch((err) => {
@@ -156,12 +153,11 @@ function handleProfileFormSubmit() {
 }
 
 function handleAddCardFormSubmit() {
-    const getValues = popupAddCardForm._getInputValues();
+    const getValues = popupAddCardForm.getInputValues();
     const data = { name: getValues.title, link: getValues.url };
     api.sendCardData(data).then((item) => {
-        pageGallery.addItem(createCard({ item }));
+        pageGallery.addItem(item);
         popupAddCardForm.close();
-        addCardForm.reset();
     });
 }
 //event listeners

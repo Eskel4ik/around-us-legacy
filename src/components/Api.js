@@ -14,84 +14,51 @@ export default class Api {
                     link: this._link
                 })
             })
-            .then(res => {
-                if (res.ok) {
-                    return res.json();
-                }
-                return Promise.reject(`Error: ${res.status}`);
-            })
+            .then(this._checkResponce);
     }
     setUserInfo({ name, about, avatar }) {
-        this._name = name;
-        this._about = about;
-        this._avatar = avatar;
         return fetch(`${this._baseUrl}/users/me`, {
                 method: "PATCH",
                 headers: this._headers,
                 body: JSON.stringify({
-                    name: this._name,
-                    about: this._about,
-                    avatar: this._avatar
+                    name,
+                    about,
+                    avatar
                 })
             })
-            .then(res => {
-                if (res.ok) {
-                    return res.json();
-                }
-                return Promise.reject(`Error: ${res.status}`);
-            })
+            .then(this._checkResponce);
     }
     getUserInfo() {
         return fetch(`${this._baseUrl}/users/me`, {
                 method: "GET",
                 headers: this._headers
             })
-            .then(res => {
-                if (res.ok) {
-                    return res.json();
-                }
-                return Promise.reject(`Error: ${res.status}`);
-            })
+            .then(this._checkResponce);
     }
     getInitialCards() {
         return fetch(`${this._baseUrl}/cards`, {
                 method: "GET",
                 headers: this._headers
             })
-            .then(res => {
-                if (res.ok) {
-                    return res.json();
-                }
-                return Promise.reject(`Error: ${res.status}`);
-            });
+            .then(this._checkResponce);
     }
     deleteCard(data) {
         return fetch(`${this._baseUrl}/cards/${data._id}`, {
             method: "DELETE",
             headers: this._headers,
-        });
+        }).then(this._checkResponce);
     }
     likeAdd(data) {
         return fetch(`${this._baseUrl}/cards/likes/${data._id}`, {
             method: "PUT",
             headers: this._headers,
-        }).then(res => {
-            if (res.ok) {
-                return res.json();
-            }
-            return Promise.reject(`Error: ${res.status}`);
-        })
+        }).then(this._checkResponce);
     }
     likeDelete(data) {
-        return fetch(`${this._baseUrl}/cards/likes/${data}`, {
+        return fetch(`${this._baseUrl}/cards/likes/${data._id}`, {
             method: "DELETE",
             headers: this._headers,
-        }).then(res => {
-            if (res.ok) {
-                return res.json();
-            }
-            return Promise.reject(`Error: ${res.status}`);
-        })
+        }).then(this._checkResponce);
     }
     editProfilePhoto(data) {
         return fetch(`${this._baseUrl}/users/me/avatar`, {
@@ -100,11 +67,12 @@ export default class Api {
             body: JSON.stringify({
                 avatar: data
             })
-        }).then(res => {
-            if (res.ok) {
-                return res.json();
-            }
-            return Promise.reject(`Error: ${res.status}`);
-        })
+        }).then(this._checkResponce);
+    }
+    _checkResponce(res) {
+        if (res.ok) {
+            return res.json();
+        }
+        return Promise.reject(`Error: ${res.status}`);
     }
 }

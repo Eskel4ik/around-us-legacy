@@ -62,6 +62,7 @@ const userInfoInstance = new UserInfo({ userName: '.user__name', userInfo: '.use
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
     .then(([userData, cardData]) => {
+        console.log(userData);
         userInfoInstance.setUserInfo(userData);
         userInfoInstance.setUserAvatar(userData.avatar);
         currentUserInfo = userData;

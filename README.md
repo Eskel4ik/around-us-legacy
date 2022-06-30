@@ -5,7 +5,7 @@ This is my project page of social network with photo gallery.
 
 * Project contain a single web page with user profile with short gallery of pictures cards. 
 * HTML markup with CSS styling, JS validation and site functionality.
-* OOP patter.
+* OOP pattern.
 
 * [Link to the project in GitHub Pages](https://eskel4ik.github.io/around-us-legacy/index.html). 
 
